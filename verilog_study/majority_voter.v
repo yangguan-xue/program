@@ -6,31 +6,3 @@ module majority_voter(
 );
     assign y = (a & b)|(a & c)|(b & c);
 endmodule
-
-
-
-module adder4(
-    input wire [3:0] a,
-    input wire [3:0] b,
-    output wire [4:0] sum
-);
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

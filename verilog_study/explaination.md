@@ -101,11 +101,113 @@ reg [0:31]     data ;       //声明32bit位宽的寄存器变量data, 最高有
 ```
 
 
+# 3.变量
+声明格式如下:
+<数据类型><符号><位宽><变量名> <元素数>
+其中数据类型和变量名是必要的，其余均可省略。数据类型可以是net型、variable型
+
+net型变量:相当于硬件电路中的物理连接，特点是输出的值随着输入值的变化而变化
+![alt text](image-1.png)
+
+variable型变量:该变量是有存储功能的数据类型
+
+![alt text](image-2.png)
+
+非门
+如果输入为高电平（逻辑1），则输出为低电平（逻辑0）；如果输入为低电平（逻辑0），则输出为高电平（逻辑1）
+```
+module not_gate (
+    input wire in,  // 输入信号
+    output wire out // 输出信号
+);
+ 
+// 使用assign语句创建一个非门
+assign out = ~in;
+ 
+endmodule
+```
+
+
+
+与门
+只有当所有输入都是高电平时，输出才是高电平；否则，输出为低电平。
+```
+module and_gate (
+    input wire a,  // 第一个输入信号
+    input wire b,  // 第二个输入信号
+    output wire out // 输出信号
+);
+ 
+// 使用assign语句创建一个与门
+assign out = a & b;
+ 
+endmodule
+
+```
+
+
+
+或门
+只要有一个输入是高电平，输出就是高电平；只有当所有输入都是低电平时，输出才是低电平。
+```
+module or_gate (
+    input wire a,  // 第一个输入信号
+    input wire b,  // 第二个输入信号
+    output wire out // 输出信号
+);
+ 
+// 使用assign语句创建一个或门
+assign out = a | b;
+ 
+endmodule
+
+```
+
+
+
+与非门
 
 
 
 
+或非门
+或非门是逻辑或门的输出经过非门的结果
+```
+module nor_gate (
+    input wire a,  // 第一个输入信号
+    input wire b,  // 第二个输入信号
+    output wire out // 输出信号
+);
+ 
+// 使用assign语句创建一个或非门
+// 或非逻辑是输入的逻辑或的结果取反
+assign out = ~(a | b);
+ 
+endmodule
+```
 
+异或门
+如果输入信号相同，则输出为低电平；如果输入信号不同，则输出高电平
+```
+module xnor_gate (
+    input wire a,  // 第一个输入信号
+    input wire b,  // 第二个输入信号
+    output wire out // 输出信号
+);
+ 
+// 使用assign语句创建一个异或非门
+// 异或非逻辑是输入的异或结果取反
+assign out = a ^ b;
+ 
+endmodule
+
+```
+
+iverilog -o wave led_test.v led_test_tb.v
+
+vvp -n wave
+
+gtkwave
 
 
 
